@@ -27,22 +27,7 @@ export default function UsersPage() {
     setIsOpen(!isOpen);
   };
 
-  // const getUsersData = async () => {
-  //   const res = [];
-  //   const resUsers = await getUsers().then((res) =>
-  //     res.users.filter((item) => item.role_id > 2)
-  //   );
-  //   const resManagers = await getUsers().then((res) =>
-  //     res.users.filter((item) => (item.role_id === 2))
-  //   );
-  //   res.push(...resUsers);
-  //   res.push(...resManagers);
-  //   return setData(res);
-  // };
-
-  // useEffect(() => {
-  //   getUsersData();
-  // }, [isOpen]);
+ 
   useEffect(() => {
     const fetchData = async () => {
       const res = await getUsers();

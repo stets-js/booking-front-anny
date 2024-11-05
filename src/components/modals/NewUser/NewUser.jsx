@@ -9,7 +9,7 @@ import Form from "../../Form/Form";
 
 const NewUser = ({ isOpen, handleClose, isAdmin }) => {
   const [name, setName] = useState("");
-  const [rating, setRating] = useState("");
+  const [team, setTeam] = useState("");
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState(2);
@@ -25,12 +25,12 @@ const NewUser = ({ isOpen, handleClose, isAdmin }) => {
             onSubmit={() => {
               handleClose();
               setRole(2);
-              setRating("");
+              setTeam("");
               setPassword("");
               setLogin("");
               setName("");
             }}
-            rating={rating}
+            team={team}
             login={login}
             password={password}
             role_id={role}
@@ -50,16 +50,21 @@ const NewUser = ({ isOpen, handleClose, isAdmin }) => {
               isRequired={true}
               handler={setName}
             />
-            <FormInput
-              title="Rating:"
-              type="text"
-              name="rating"
-              max={50}
-              value={rating}
-              placeholder="Rating"
-              isRequired={true}
-              handler={setRating}
-            />
+            <Select
+              title="Team:"
+              type="no-request"
+              setValue={setTeam}
+              value={team}
+              manager={true}
+              administrator={isAdmin}
+              defaultValue="Chat"
+            >
+              <option value="Chat">Chat</option>
+                    <option value="OM">OM</option>
+                    <option value="Drop">Drop</option>
+                    <option value="Deptor">Deptor</option>
+                    <option value="Awake">Awake</option>
+            </Select>
 
             <div className={styles.input__block}>
               <FormInput
@@ -85,15 +90,6 @@ const NewUser = ({ isOpen, handleClose, isAdmin }) => {
                 handler={setPassword}
               />
             </div>
-            <Select
-              title="Role:"
-              request={getRoles}
-              setValue={setRole}
-              value={role}
-              manager={true}
-              administrator={isAdmin}
-              defaultValue="manager/caller/confirmator"
-            ></Select>
           </Form>
         </Modal>
       )}

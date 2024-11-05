@@ -138,14 +138,10 @@ export default function Managers({ isOpenModal, isAdmin, data }) {
         handleClose={() => setIsOpen(!isOpen)}
         id={id}
         dataName={name}
-        dataDesc={rating}
         administrator={isAdmin}
         dataRole={newRole}
         dataLogin={newLogin}
         dataTeam={team}
-        dataSlack={slack}
-        dataZohoId={zohoId}
-        dataSlackId={slackId}
         dataPassword={password}
       />
     </>

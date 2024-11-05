@@ -74,7 +74,7 @@ const GoogleSheets = () => {
           min={startDate}
         />
       </div>
-      <div className={styles.wrapper}>
+      {/* <div className={styles.wrapper}>
       <div className={styles.btn__wrapper}>
         <button onClick={() => sendDataToEndpoint("push_analytics_by_date_3_1")} disabled={!isDatesSelected} >
         Relation 3-1
@@ -108,7 +108,7 @@ const GoogleSheets = () => {
       <button onClick={()=> setManagersRating()} type="button" className={styles.rating}>Update managers rating</button>
 
       {isLoading ? <img src={loadingGif} alt="loading..." className={styles.loader} /> : null}
-      </div>
+      </div> */}
       </div>
     </>
   );

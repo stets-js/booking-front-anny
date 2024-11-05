@@ -24,13 +24,7 @@ export default function MobileManagers({ isOpenModal, isAdmin, data }) {
   const [password, setPassword] = useState("");
 
   const usersArray = [
-    {
-      text: "Administrators",
-      role: "Administrator",
-      roleId: 3,
-      isAdmin: false,
-      isManager: false,
-    },
+    
     {
       text: "Managers",
       role: "Manager",
@@ -38,20 +32,7 @@ export default function MobileManagers({ isOpenModal, isAdmin, data }) {
       isAdmin: false,
       isManager: true,
     },
-    {
-      text: "Confirmators",
-      role: "Confirmator",
-      roleId: 5,
-      isAdmin: false,
-      isManager: false,
-    },
-    {
-      text: "Call center",
-      role: "Caller",
-      isAdmin: false,
-      roleId: 4,
-      isManager: false,
-    },
+   
   ];
 
   const getUsersData = async (teamNum) => {
@@ -64,7 +45,7 @@ export default function MobileManagers({ isOpenModal, isAdmin, data }) {
     
     const filteredManagers = teamNum === "All"
     ? resManagers
-    : resManagers.filter((item) => item.team === parseInt(teamNum, 10));
+    : resManagers.filter((item) => item.team === teamNum);
     const sortedManagers = filteredManagers.sort((a, b) => a.name.localeCompare(b.name));
     arr.push(...res);
     arr.push(...sortedManagers);
@@ -106,15 +87,11 @@ export default function MobileManagers({ isOpenModal, isAdmin, data }) {
                 }}
               >
                 <option value="All">All</option>
-                <option value="1">Team 1</option>
-                <option value="2">Team 2</option>
-                <option value="3">Team 3</option>
-                <option value="4">Team 4</option>
-                <option value="5">Team 5</option>
-                <option value="6">Team 6</option>
-                <option value="7">Team 7</option>
-                <option value="8">CB MIC</option>
-                <option value="9">Without sale</option>
+                <option value="Chat">Chat</option>
+                    <option value="OM">OM</option>
+                    <option value="Drop">Drop</option>
+                    <option value="Deptor">Deptor</option>
+                    <option value="Awake">Awake</option>
               </select>
             )}
             <ul className={styles.main_wrapper}>
@@ -136,16 +113,7 @@ export default function MobileManagers({ isOpenModal, isAdmin, data }) {
                         <Link
                           className={styles.ul_items_link}
                           target="_self"
-                          to={
-                            selectedRole === "Manager"
-                              ? `/manager/${item.id}/consultations/`
-                              : selectedRole === "Administrator"
-                              ? `/admin/${item.id}`
-                              : selectedRole === "Caller"
-                              ? `/caller/${item.id}`
-                              : selectedRole === "Confirmator" &&
-                                `/confirmator/${item.id}`
-                          }
+                          to={selectedRole === "Manager" && `/manager/${item.id}/planning/`}
                         >
                           <p className={styles.ul_items_text}>
                             {item.name} ({item.id})

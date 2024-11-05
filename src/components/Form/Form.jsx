@@ -290,25 +290,7 @@ const Form = ({
           ) : (
             ""
           )}
-          {role === 2 && !signUp ? (
-            <>
-              <OpenChangeManagerCourses
-                OpenChangeManagerCoursesFunc={setIsChangeManagerCoursesOpen}
-                curState={isChangeManagerCoursesOpen}
-              />
-
-              {isChangeManagerCoursesOpen ? (
-                <ChangeManagerCourses
-                  managerId={id}
-                  handleClose={() => {
-                    setIsChangeManagerCoursesOpen(!isChangeManagerCoursesOpen);
-                  }}
-                />
-              ) : null}
-            </>
-          ) : (
-            ""
-          )}
+          
         </div>
       </form>
       {type.type === "no-request-test" &&
@@ -362,23 +344,7 @@ const Form = ({
       {type.type !== "no-request-test" && (
         <p className={styles.exit}>Click outside to exit</p>
       )}
-      {isConfirmationOpen && successConfirm && (
-        <div className={styles.confirmationBackdrop}>
-        <div className={styles.confirmationModal}>
-          <p className={styles.confirmationTitle}>Submit the form with selected course?</p>
-          <p className={styles.courseTitle}>Course: <span className={styles.courseTitleAccent}>{course}</span></p>
-          <div className={styles.btn_wrapper}>
-
-          <button onClick={handleConfirm} className={styles.yesButton}>
-            Yes
-          </button>
-          <button onClick={handleCancel} className={styles.noButton}>
-            No
-          </button>
-          </div>
-        </div>
-        </div>
-      )}
+      
     </div>
   );
 };
