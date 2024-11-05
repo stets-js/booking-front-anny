@@ -25,16 +25,16 @@ const ControlButtons = () => {
           styleActive={styles.controlButtonGreenFocus}
           styleColor={styles.controlButtonGreen}
           onChangeType={onCheckedButton}
-          title="Consultations"
+          title="Working time"
         />
-        <RadioButton
+        {/* <RadioButton
           buttonType={buttonType}
           style={styles.controlButton}
           styleActive={styles.controlButtonOrangeFocus}
           styleColor={styles.controlButtonOrange}
           onChangeType={onCheckedButton}
           title="Working time"
-        />
+        /> */}
         <RadioButton
           buttonType={buttonType}
           style={styles.controlButton}

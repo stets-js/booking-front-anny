@@ -101,7 +101,7 @@ const PlanningPage = () => {
 
   const onClickSlot = (dayIndex, hourIndex) => {
     switch (typeSelection) {
-      case "Consultations":
+      case "Working time":
         dispatch(setManagerLoading(true));
         return updateSlot(
           managerId,
@@ -116,26 +116,6 @@ const PlanningPage = () => {
                 dayIndex,
                 hourIndex,
                 colorId: 1,
-              })
-            );
-          })
-          .catch((err) => dispatch(setManagerError(err.message)))
-          .finally(() => dispatch(setManagerLoading(false)));
-      case "Working time":
-        dispatch(setManagerLoading(true));
-        return updateSlot(
-          managerId,
-          weekId,
-          dayIndex,
-          table[dayIndex][hourIndex].time,
-          2
-        )
-          .then((data) => {
-            dispatch(
-              changeStatusSlot({
-                dayIndex,
-                hourIndex,
-                colorId: 2,
               })
             );
           })
