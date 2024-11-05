@@ -2,6 +2,7 @@ import { Fade } from "react-awesome-reveal";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./Navigation.module.scss";
+import { v4 as uuidv4 } from "uuid";
 
 export default function Navigation({ links, user }) {
   return (
@@ -18,7 +19,7 @@ export default function Navigation({ links, user }) {
       <ul className={styles["list"]}>
        <Fade duration={250} cascade triggerOnce direction="up">
           {links.map((item) => (
-            <li key={item.path} className={styles["list__item"]}>
+            <li key={uuidv4()} className={styles["list__item"]}>
               <NavLink
                 to={item.path}
                 className={(navData) =>

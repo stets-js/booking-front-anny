@@ -9,10 +9,8 @@ const History = () => {
       <Header
         endpoints={[
           {text:"Login history", path: path.authorization},
-          {text:"Appointment history", path: path.ik},
           {text:"Slot history", path: path.slotHistory},
           {text:"Google sheets", path: path.googleSheets},
-          {text:"Manager courses", path: path.managerCourses},
         ]}
       />
     
