@@ -6,6 +6,7 @@ import {
   getWeekId,
 } from "../../redux/caller/caller-selectors";
 import { getTeamCalendarWeek } from "../../redux/caller/caller-operations";
+import { getManagerCurrentWeek } from "../../redux/manager/manager-operations";
 import Header from "../../components/Header/Header";
 import styles from "./TeamCalendar.module.scss";
 import BgWrapper from "../../components/BgWrapper/BgWrapper";
@@ -21,7 +22,7 @@ import { getGroups } from "../../helpers/course/course";
 export default function TeamCalendar() {
   const tableDate = useSelector(getCallerDate);
   const table = useSelector(getTable);
-  const weekId = useSelector(getWeekId);
+  
   const dispatch = useDispatch();
   const [dataLoading, setDataLoading] = useState(false);
   const [selectedTeam, setSelectedTeam] = useState("All");
@@ -33,6 +34,12 @@ export default function TeamCalendar() {
   const [allGroups, setAllGroups] = useState([]);
   const [isGroupSelectorDisabled, setIsGroupSelectorDisabled] = useState(false);
 
+  useEffect(() => {
+    dispatch(getManagerCurrentWeek(50));
+  },[dispatch]);
+
+  const weekId = useSelector(getWeekId);
+  console.log("weekId", weekId)
   useEffect(() => {
     setDataLoading(true);
     if (weekId) {
