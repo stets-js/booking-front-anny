@@ -50,7 +50,7 @@ export default function LoginBox({ loggedUser }) {
             >
               Log in
             </button>
-            <button
+            {/* <button
               type="button"
               data-modal="signup"
               onClick={() => {
@@ -59,10 +59,10 @@ export default function LoginBox({ loggedUser }) {
               className={styles.signup}
             >
               Sign up
-            </button>
+            </button> */}
           </div>
         )}
-        {isAuthenticated ? null : <button
+        {/* {isAuthenticated ? null : <button
           className={styles.button}
           data-modal="settings"
           onClick={() => setIsOpen(!isOpen)}
@@ -80,7 +80,7 @@ export default function LoginBox({ loggedUser }) {
             isOpen={isOpen}
             handleClose={() => setIsOpen(!isOpen)}
           />
-        )}
+        )} */}
       </div>
       {isAuthenticated && (
         <button type="button" className={styles.logout}
