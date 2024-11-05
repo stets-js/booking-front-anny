@@ -35,7 +35,7 @@ export default function LoginBox({ loggedUser }) {
               data-modal="login"
               onClick={() => {
                 setIsOpen(!isOpen);
-                  const tokenFromLocalStorage = localStorage.getItem("booking");
+                  const tokenFromLocalStorage = localStorage.getItem("booking-service");
               
                   if (tokenFromLocalStorage) {
                       dispatch({
@@ -85,7 +85,7 @@ export default function LoginBox({ loggedUser }) {
       {isAuthenticated && (
         <button type="button" className={styles.logout}
         onClick={()=> {
-          localStorage.removeItem("booking")
+          localStorage.removeItem("booking-service")
           dispatch({
             type: 'LOGOUT'
           });

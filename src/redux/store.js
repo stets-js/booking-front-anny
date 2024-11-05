@@ -50,7 +50,7 @@ store.subscribe(() => {
   const state = store.getState();
   if (state.auth.token) {
     const decodedToken = jwtDecode(state.auth.token);
-    const localToken = localStorage.getItem('booking');
+    const localToken = localStorage.getItem('booking-service');
     if (!localToken) {
       store.dispatch({ type: "LOGOUT" });
     }

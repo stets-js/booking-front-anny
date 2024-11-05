@@ -62,7 +62,7 @@ const setPostponedConfirmation = (slot_id, appointment_id) => {
 };
 
 const removeSlot = (slot_id, reason, removeMessage) => {
-  const authToken = localStorage.getItem("booking");
+  const authToken = localStorage.getItem("booking-service");
   const { id, zoho_id } = jwtDecode(authToken);
 
   const data = {

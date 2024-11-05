@@ -41,7 +41,7 @@ const authReducer = (state = initialState, action) => {
         },
       };
     case LOGOUT:
-      localStorage.removeItem('booking');
+      localStorage.removeItem('booking-service');
       return initialState;
     default:
       return state;

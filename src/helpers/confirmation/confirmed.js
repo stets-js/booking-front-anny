@@ -19,7 +19,7 @@ const getConfirmedWeekData = (weekId, dayId, halfId) => {
 };
 
 const setConfirmed = (slot_id, status, message) => {
-  const authToken = localStorage.getItem("booking");
+  const authToken = localStorage.getItem("booking-service");
   const headers = {
     Authorization: `Bearer ${authToken}`,
   };
@@ -36,7 +36,7 @@ const setConfirmed = (slot_id, status, message) => {
 };
 
 const setCancelConfirmed = (slot_id, status, message) => {
-  const authToken = localStorage.getItem("booking");
+  const authToken = localStorage.getItem("booking-service");
   const headers = {
     Authorization: `Bearer ${authToken}`,
   };

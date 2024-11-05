@@ -36,7 +36,7 @@ const postConsultationResult = (slotId, result, groupId, message, unsuccessfulMe
 
   return axios.post("/consultation_result", data)
     .then((res) => {
-      const authToken = localStorage.getItem("booking");
+      const authToken = localStorage.getItem("booking-service");
       const { zoho_id } = jwtDecode(authToken);
       const responseData = {
         ...res.data,

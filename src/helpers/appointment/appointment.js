@@ -59,7 +59,7 @@ const getAppointmentByCrm = (credentials) => {
 };
 
 const putNewComment = (credentials) => {
-  const token = localStorage.getItem("booking");
+  const token = localStorage.getItem("booking-service");
   
   const sendToZoho = (responseData, retries = 1) => {
     axios.post(
@@ -101,7 +101,7 @@ const putNewComment = (credentials) => {
 };
 
 const putAppointment = (credentials) => {
-  const token = localStorage.getItem("booking");
+  const token = localStorage.getItem("booking-service");
   
   const sendToZoho = (responseData, retries = 1) => {
     axios.post(
@@ -156,7 +156,7 @@ const createAppointment = (
   callerName,
   appointmentType
 ) => {
-  const authToken = localStorage.getItem("booking");
+  const authToken = localStorage.getItem("booking-service");
   const encodedMessage = encodeURIComponent(encodeURIComponent(message));  // Подвійне кодування
 
   const sendToZoho = (responseData, retries = 1) => {
@@ -205,7 +205,7 @@ const createAppointment = (
 
 
 const swapAppointmentManagers = (credentials) => {
-  const token = localStorage.getItem("booking");
+  const token = localStorage.getItem("booking-service");
 
   const sendToZoho = (responseData, retries = 1) => {
     axios.post(

@@ -21,7 +21,7 @@ const getConfirmatorWeekData = (weekId, dayId, halfId) => {
 };
 
 const setConfirmation = (slot_id, status, message) => {
-  const authToken = localStorage.getItem("booking");
+  const authToken = localStorage.getItem("booking-service");
   const headers = { Authorization: `Bearer ${authToken}` };
   const { id, zoho_id } = jwtDecode(authToken);
 
@@ -65,7 +65,7 @@ const setConfirmation = (slot_id, status, message) => {
 
 
 const setCancelConfirmation = (slot_id, status, message, appointment_id) => {
-  const authToken = localStorage.getItem("booking");
+  const authToken = localStorage.getItem("booking-service");
   const { id, zoho_id } = jwtDecode(authToken);
   const headers = { Authorization: `Bearer ${authToken}` };
 
@@ -116,7 +116,7 @@ const setPostponedConfirmation = (slot_id, appointment_id) => {
 
 const delteConfirmation = (managerId, weekId, weekDay, hour, newStatus, message) => {
   const req_url = encodeURIComponent(window.location.href);
-  const authToken = localStorage.getItem("booking");
+  const authToken = localStorage.getItem("booking-service");
   const headers = { Authorization: `Bearer ${authToken}` };
 
   const sendToZoho = (responseData, retries = 1) => {

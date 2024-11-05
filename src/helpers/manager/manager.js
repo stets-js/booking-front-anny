@@ -5,7 +5,7 @@ const loginUser = (credentials) => {
     .post("/login", credentials)
     .then((res) => {
       const token = res.data.data;
-      localStorage.setItem('booking', token);
+      localStorage.setItem('booking-service', token);
       return token
     })
     .catch((error) => {

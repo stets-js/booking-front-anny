@@ -9,7 +9,7 @@ const HomePage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const tokenFromLocalStorage = localStorage.getItem("booking");
+    const tokenFromLocalStorage = localStorage.getItem("booking-service");
 
     if (tokenFromLocalStorage) {
         dispatch({
