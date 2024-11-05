@@ -100,11 +100,7 @@ export default function TeamCalendar() {
       <Header
         endpoints={[
           { text: "Users", path: path.users },
-          { text: "Available Managers", path: path.available },
-          { text: "Groups", path: path.groups },
-          { text: "Courses", path: path.courses },
-          { text: "Search by CRM", path: path.crm },
-          { text: "Current Meetings", path: path.currentManagers },
+          // { text: "Current Meetings", path: path.currentManagers },
           { text: "History", path: path.history },
           { text: "Team calendar", path: path.teamCalendar },
         ]}
@@ -140,7 +136,7 @@ export default function TeamCalendar() {
                   </option>
                 ))}
             </select>
-            <p className={styles.selectLabel}>Course:</p>
+            {/* <p className={styles.selectLabel}>Course:</p>
             <select
               className={styles.courses__select}
               value={selectedCourse}
@@ -166,7 +162,7 @@ export default function TeamCalendar() {
                   {group}
                 </option>
               ))}
-            </select>
+            </select> */}
           </div>
           <DatePicker
             changeDateFn={getTeamCalendarWeek}
