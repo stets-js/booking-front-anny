@@ -22,6 +22,7 @@ import { getGroups } from "../../helpers/course/course";
 export default function TeamCalendar() {
   const tableDate = useSelector(getCallerDate);
   const table = useSelector(getTable);
+  const weekId = useSelector(getWeekId);
   
   const dispatch = useDispatch();
   const [dataLoading, setDataLoading] = useState(false);
@@ -33,13 +34,9 @@ export default function TeamCalendar() {
   const [allCourses, setAllCourses] = useState([]);
   const [allGroups, setAllGroups] = useState([]);
   const [isGroupSelectorDisabled, setIsGroupSelectorDisabled] = useState(false);
+  
 
-  useEffect(() => {
-    dispatch(getManagerCurrentWeek(50));
-  },[dispatch]);
-
-  const weekId = useSelector(getWeekId);
-  console.log("weekId", weekId)
+  
   useEffect(() => {
     setDataLoading(true);
     if (weekId) {
