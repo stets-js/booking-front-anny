@@ -10,13 +10,11 @@ import { Fade } from "react-awesome-reveal";
 import { getWeekId } from "../../redux/manager/manager-selectors";
 import { getWeekId as getCallerWeekId } from "../../redux/caller/caller-selectors";
 
-const DatePicker = ({ tableDate, changeDateFn, caller, courseId, teamCalendar }) => {
+const DatePicker = ({ tableDate, changeDateFn, teamCalendar }) => {
   const { managerId } = useParams();
   const dispatch = useDispatch();
   const currentWeekId = useSelector(getWeekId);
   let weekId = currentWeekId;
-  const currentCallerWeekId = useSelector(getCallerWeekId);
-  let callerWeekId = currentCallerWeekId;
   const [date, setDate] = useState(new Date(tableDate));
   const endDate = moment(date).add(6, "days");
   const month =
@@ -30,19 +28,15 @@ const DatePicker = ({ tableDate, changeDateFn, caller, courseId, teamCalendar })
   const onClickArrowRight = (e) => {
     e.stopPropagation();
     setDate(moment(date).add(7, "days")._d);
-    caller ? callerWeekId +=1 : weekId += 1;
-    caller
-      ? dispatch(changeDateFn({ weekId: callerWeekId, courseId }))
-      : teamCalendar? dispatch(changeDateFn({ weekId: callerWeekId })) : dispatch(changeDateFn({ managerId, weekId }));
+    weekId += 1;
+    teamCalendar ? dispatch(changeDateFn({ weekId: weekId })) : dispatch(changeDateFn({ managerId, weekId }));
   };
 
   const onClickArrowLeft = (e) => {
     e.stopPropagation();
     setDate(moment(date).subtract(7, "days")._d);
-    caller ? callerWeekId -=1 : weekId -= 1;
-    caller
-      ? dispatch(changeDateFn({ weekId: callerWeekId, courseId }))
-      : teamCalendar? dispatch(changeDateFn({ weekId: callerWeekId })) : dispatch(changeDateFn({ managerId, weekId }));
+    weekId -= 1;
+    teamCalendar ? dispatch(changeDateFn({ weekId: weekId })) : dispatch(changeDateFn({ managerId, weekId }));
   };
   useEffect(() => {
     setDate(new Date(tableDate));

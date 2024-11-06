@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  getCallerDate,
   getTable,
   getWeekId,
-} from "../../redux/caller/caller-selectors";
-import { getTeamCalendarWeek } from "../../redux/caller/caller-operations";
-import { getManagerCurrentWeek } from "../../redux/manager/manager-operations";
+  getDate
+} from "../../redux/manager/manager-selectors";
+import { getTeamCalendarWeek2 } from "../../redux/manager/manager-operations";
 import Header from "../../components/Header/Header";
 import styles from "./TeamCalendar.module.scss";
 import BgWrapper from "../../components/BgWrapper/BgWrapper";
@@ -17,10 +16,10 @@ import Days from "../../components/Days/Days";
 import DaysPicker from "../../components/DaysPicker/DaysPicker";
 import "react-calendar/dist/Calendar.css";
 import path from "../../helpers/routerPath";
-import { getGroups } from "../../helpers/course/course";
+
 
 export default function TeamCalendar() {
-  const tableDate = useSelector(getCallerDate);
+  const tableDate = useSelector(getDate);
   const table = useSelector(getTable);
   const weekId = useSelector(getWeekId);
   
@@ -28,12 +27,7 @@ export default function TeamCalendar() {
   const [dataLoading, setDataLoading] = useState(false);
   const [selectedTeam, setSelectedTeam] = useState("All");
   const [selectedManager, setSelectedManager] = useState("All");
-  const [selectedCourse, setSelectedCourse] = useState("All");
-  const [selectedGroup, setSelectedGroup] = useState("All");
   const [teamsAndManagers, setTeamsAndManagers] = useState({});
-  const [allCourses, setAllCourses] = useState([]);
-  const [allGroups, setAllGroups] = useState([]);
-  const [isGroupSelectorDisabled, setIsGroupSelectorDisabled] = useState(false);
   
 
   
@@ -41,58 +35,32 @@ export default function TeamCalendar() {
     setDataLoading(true);
     if (weekId) {
       dispatch(
-        getTeamCalendarWeek({
+        getTeamCalendarWeek2({
           weekId,
           team: selectedTeam !== "All" ? selectedTeam : null,
-          manager: selectedManager !== "All" ? selectedManager : null,
-          course: selectedCourse !== "All" ? selectedCourse : null,
-          group: selectedGroup !== "All" ? selectedGroup : null,
+          manager: selectedManager !== "All" ? selectedManager : null
         })
       )
         .then((response) => {
           if (response.payload.teamsAndManagers) {
             setTeamsAndManagers(response.payload.teamsAndManagers);
           }
-          if (response.payload.allCourses) {
-            setAllCourses(response.payload.allCourses);
-          }
+          
         })
         .finally(() => setDataLoading(false));
     }
-  }, [dispatch, weekId, selectedTeam, selectedManager, selectedCourse, selectedGroup]);
+  }, [dispatch, weekId, selectedTeam, selectedManager]);
 
-  useEffect(() => {
-    getGroups()
-      .then((groups) => setAllGroups(groups.data))
-      .catch((error) => console.error("Failed to fetch groups", error));
-  }, []);
-
-  useEffect(() => {
-    // Disable group selector if Team, Manager, or Course is not "All"
-    setIsGroupSelectorDisabled(selectedCourse !== "All");
-  }, [selectedTeam, selectedManager, selectedCourse]);
 
   const handleTeamChange = (e) => {
     setSelectedTeam(e.target.value);
     setSelectedManager("All");
-    setSelectedCourse("All");
-    setSelectedGroup("All");
   };
 
   const handleManagerChange = (e) => {
     setSelectedManager(e.target.value);
   };
 
-  const handleCourseChange = (e) => {
-    setSelectedCourse(e.target.value);
-    if (e.target.value !== "All") {
-      setSelectedGroup("All");
-    }
-  };
-
-  const handleGroupChange = (e) => {
-    setSelectedGroup(e.target.value);
-  };
 
   const [currentDayIndex, setCurrentDayIndex] = useState(0);
   function setDayIndex(num) {
@@ -140,46 +108,20 @@ export default function TeamCalendar() {
                   </option>
                 ))}
             </select>
-            {/* <p className={styles.selectLabel}>Course:</p>
-            <select
-              className={styles.courses__select}
-              value={selectedCourse}
-              onChange={handleCourseChange}
-            >
-              <option value="All">All</option>
-              {allCourses.map((course) => (
-                <option value={course} key={course}>
-                  {course}
-                </option>
-              ))}
-            </select>
-            <p className={styles.selectLabel}>Course group:</p>
-            <select
-              className={styles.groups__select}
-              value={selectedGroup}
-              onChange={handleGroupChange}
-              disabled={isGroupSelectorDisabled}
-            >
-              <option value="All">All</option>
-              {allGroups.map((group) => (
-                <option value={group} key={group}>
-                  {group}
-                </option>
-              ))}
-            </select> */}
+            
           </div>
           <DatePicker
-            changeDateFn={getTeamCalendarWeek}
+            changeDateFn={getTeamCalendarWeek2}
             tableDate={tableDate}
-            caller
+            teamCalendar
           />
           {window.innerWidth > 1100 ? (
-            <Days caller />
+            <Days  />
           ) : (
-            <DaysPicker setDayIndex={setDayIndex} caller />
+            <DaysPicker setDayIndex={setDayIndex} />
           )}
           {window.innerWidth > 1100 ? (
-            <Table table={table} weekId={weekId} teamCalendar />
+            <Table table={table}     weekId={weekId} teamCalendar />
           ) : (
             <DayTable
               weekId={weekId}

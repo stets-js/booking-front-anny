@@ -17,6 +17,7 @@ import {
   updateSlot,
   getCurrentWorkWeek,
   getWorkWeek,
+  getTeamsWorkWeek2
 } from "../../helpers/week/week";
 import { defaults } from "@pnotify/core";
 defaults.delay = 1000;
@@ -26,6 +27,24 @@ const changeStatusSlot = createAction(TYPE_SLOT);
 const setManagerError = createAction(MANAGER_ERROR);
 const setManagerLoading = createAction(MANAGER_LOADING);
 const setSavedTemplate = createAction(SAVE_TABLE);
+
+const getTeamCalendarWeek2 = createAsyncThunk(
+  GET_WEEK,
+  ({ weekId, team, manager }, { rejectWithValue }) => {
+    return getTeamsWorkWeek2(weekId, team, manager)
+      .then((data) => data)
+      .catch((data) => {
+        error(
+          `${
+            data.response.data.message
+              ? data.response.data.message
+              : data.message
+          }`
+        );
+        return rejectWithValue(data.message);
+      });
+  }
+);
 
 const getManagerCurrentWeek = createAsyncThunk(
   GET_WEEK,
@@ -151,4 +170,5 @@ export {
   getManagerTable,
   setSavedTemplate,
   getManagerWorkWeek,
+  getTeamCalendarWeek2
 };

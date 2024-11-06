@@ -9,7 +9,8 @@ import {
   getManagerTable,
   setSavedTemplate,
   getManagerCurrentWorkWeek,
-  getManagerWorkWeek
+  getManagerWorkWeek,
+  getTeamCalendarWeek2
 } from "./manager-operations";
 import { combineReducers } from "redux";
 
@@ -138,6 +139,7 @@ const initialState = [
 
 
 const slots = createReducer(initialState, {
+  [getTeamCalendarWeek2.fulfilled]: (_, action) => action.payload.slots,
   [getManagerCurrentWeek.fulfilled]: (_, action) => action.payload.slots,
   [getManagerWeek.fulfilled]: (_, action) => action.payload.slots,
   [getManagerTable.fulfilled]: (_, action) => action.payload.slots,
