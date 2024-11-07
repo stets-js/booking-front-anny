@@ -18,6 +18,9 @@ import PlanningPage from "./pages/Manager/PlanningPage";
 import HomePage from "./pages/HomePage/HomePage";
 import Footer from "./components/Footer/Footer";
 import TeamCalendar from "./pages/SuperAdmin/TeamCalendar";
+import CurrentMeetingsPage from "./pages/SuperAdmin/CurrentMeetingsPage";
+import CurrentMeetingsPageList from "./pages/SuperAdmin/CurrentMeetingsPageList";
+import CurrentMeetingsPageTable from "./pages/SuperAdmin/CurrentMeetingsPageTable";
 
 const ProtectedRoute = ({ children }) => {
   const { managerId } = useParams();
@@ -67,11 +70,11 @@ const App = () => {
                 <Route
                   path={path.currentManagersList}
                   element={<CurrentMeetingsPageList />}
-                />
+                /> */}
                 <Route
                   path={path.currentManagersTable}
                   element={<CurrentMeetingsPageTable />}
-                /> */}
+                />
                 
                 <Route
                   path={path.admin}

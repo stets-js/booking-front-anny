@@ -8,8 +8,10 @@ const History = () => {
     <>
       <Header
         endpoints={[
+          { text: "Users", path: path.users },
           {text:"Login history", path: path.authorization},
           {text:"Slot history", path: path.slotHistory},
+          {text:"Current Meetings", path: path.currentManagersTable},
           {text:"Google sheets", path: path.googleSheets},
         ]}
       />

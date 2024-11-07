@@ -74,7 +74,7 @@ function CurrentMeetingsPageTable() {
     // Фільтрація по команді
     const filteredManagers = selectedTeam === "All"
       ? sortManagers(resManagers)
-      : sortManagers(resManagers.filter(item => item.team === parseInt(selectedTeam, 10)));
+      : sortManagers(resManagers.filter(item => item.team === selectedTeam));
   
         
     setDate(`${day}.${month}.${year}`);
@@ -90,7 +90,7 @@ function CurrentMeetingsPageTable() {
     // Фільтрація по команді
     const filteredManagers = selectedTeam === "All"
       ? sortManagers(resManagers)
-      : sortManagers(resManagers.filter(item => item.team === parseInt(selectedTeam, 10)));
+      : sortManagers(resManagers.filter(item => item.team === selectedTeam));
   
       
     setCurrentTableData(filteredManagers);
@@ -107,12 +107,12 @@ function CurrentMeetingsPageTable() {
     <>
       <Header
         endpoints={[
-          { text: "List View", path: path.currentManagersList },
-          { text: "Table View", path: path.currentManagersTable },
-          { text: "Managers analytics", path: path.managersAnalytics },
+          // { text: "List View", path: path.currentManagersList },
+          { text: "Users", path: path.users },
+          { text: "Table View", path: path.currentManagersTable }
         ]}
       />
-      <CurrentMeetingsStatusDefinition /> {/* statusDefinition */}
+      {/* <CurrentMeetingsStatusDefinition /> */}
       <div className={styles.wrapperControlButtons}>
         <RadioButton
           buttonType={buttonType}
@@ -120,7 +120,7 @@ function CurrentMeetingsPageTable() {
           styleActive={styles.controlButtonGreenFocus}
           styleColor={styles.controlButtonGreen}
           onChangeType={onCheckedButton}
-          title="Consultations"
+          title="Working time"
         />
         <RadioButton
           buttonType={buttonType}
@@ -128,7 +128,7 @@ function CurrentMeetingsPageTable() {
           styleActive={styles.controlButtonOrangeFocus}
           styleColor={styles.controlButtonOrange}
           onChangeType={onCheckedButton}
-          title="Working time"
+          title="Working second"
         />
         <RadioButton
           buttonType={buttonType}
@@ -148,8 +148,8 @@ function CurrentMeetingsPageTable() {
       <SortByBox
         sortText={"Selected"}
         sortTextFunc={setcurrentSelectedSortStatus}
-        sortStars={"Stars"}
-        sortStarsFunc={setCurrentSelectedStars}
+        // sortStars={"Stars"}
+        // sortStarsFunc={setCurrentSelectedStars}
         sortFree={"Hide Free slots"}
         sortFreeFunc={setHideFreeSlots}
       />
@@ -165,15 +165,11 @@ function CurrentMeetingsPageTable() {
               }}
             >
               <option value="All">All</option>
-              <option value="1">Team 1</option>
-              <option value="2">Team 2</option>
-              <option value="3">Team 3</option>
-              <option value="4">Team 4</option>
-              <option value="5">Team 5</option>
-              <option value="6">Team 6</option>
-              <option value="7">Team 7</option>
-              <option value="8">CB MIC</option>
-              <option value="9">Without sale</option>
+                    <option value="Chat">Chat</option>
+                    <option value="OM">OM</option>
+                    <option value="Drop">Drop</option>
+                    <option value="Deptor">Deptor</option>
+                    <option value="Awake">Awake</option>
             </select>
             
             <MeetingsTable
@@ -191,12 +187,7 @@ function CurrentMeetingsPageTable() {
               date={date}
               getNewTableData={getNewTableData}
             />
-            <SwapManagersComponent />
-            <div className={styles.main_wrapper}>
-              <div className={styles.main_wrapper2}>
-                <CrmLinks />
-              </div>
-            </div>
+  
           </>
         ) : (
           <div className={styles.blank}>loading...</div>

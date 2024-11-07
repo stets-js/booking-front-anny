@@ -37,9 +37,9 @@ const MeetingsTable = ({
   const indefyTimedSlotText = (timeid) => {
     switch (timeid) {
       case 1:
-        return "Available";
-      case 2:
         return "Working time";
+      case 2:
+        return "Working time second";
       case 6:
         return "Going on now";
       case 3:
@@ -69,8 +69,8 @@ const MeetingsTable = ({
       return new Promise((resolve, reject) => {
        setManagerLoading(true);
         const statusMap = {
-          Consultations: 1,
-          "Working time": 2,
+          "Working second": 2,
+          "Working time": 1,
           Free: 0,
         };
 

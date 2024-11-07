@@ -232,7 +232,7 @@ const MeetingsTableItem = ({
               activeClassnames(colorId),
               styles.managerNameSt
             )}
-            to={`/manager/${managerId}/consultations/`}
+            to={`/manager/${managerId}/planning/`}
             target="_self"
           >
             {text !== undefined ? text : `manager name is undefined`}
@@ -334,57 +334,60 @@ const MeetingsTableItem = ({
             />
           )}
         </>
-      ) : colorId === 2 ? (
-        <>
-        <li className={activeClassnames(colorId)}
-        onClick={typeSelection === "Free" ? handleDeleteClick : onClickFn}
-        >
-        {text !== undefined ? text : ``}
-          <div className={styles.hover_buttons}>
-            <button
-              className={styles.styled_button}
-              type="button"
-              data-modal="working"
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsOpen(!isOpen);
-                setModal("working");
-              }}
-            >
-              info
-            </button>
-          </div>
-        </li>
+      ) : 
+      // colorId === 2 ? (
+      //   <>
+      //   <li className={activeClassnames(colorId)}
+      //   onClick={typeSelection === "Free" ? handleDeleteClick : onClickFn}
+      //   >
+      //   {text !== undefined ? text : ``}
+      //     <div className={styles.hover_buttons}>
+      //       <button
+      //         className={styles.styled_button}
+      //         type="button"
+      //         data-modal="working"
+      //         onClick={(e) => {
+      //           e.stopPropagation();
+      //           setIsOpen(!isOpen);
+      //           setModal("working");
+      //         }}
+      //       >
+      //         info
+      //       </button>
+      //     </div>
+      //   </li>
 
-        {modal === "working" && (
-          <WorkingInfo
-            slotId={slotId}
-            isOpen={isOpen}
-            handleClose={() => setIsOpen(!isOpen)}
-          />
-        )}
-      </>
-      ):colorId === 1 ? (
-        <>
-        <li className={activeClassnames(colorId)}
-        onClick={typeSelection === "Free" ? handleDeleteClick : onClickFn}
-        >
-        {text !== undefined ? text : ``}
-          <div className={styles.hover_buttons}>
-            <button
-              className={styles.styled_button}
-              type="button"
-              data-modal="freeze"
-              // isFreeze={freeze}
-              onClick={typeSelection === "Free" ? handleDeleteClick : handleFreezeClick}
-            >
-              freeze
-            </button>
-          </div>
-          {freeze ? <div className={styles.asterix}><Snowflake /></div> : null}
-        </li>
-      </>
-      ) : (
+      //   {modal === "working" && (
+      //     <WorkingInfo
+      //       slotId={slotId}
+      //       isOpen={isOpen}
+      //       handleClose={() => setIsOpen(!isOpen)}
+      //     />
+      //   )}
+      // </>
+      // ):
+      // colorId === 1 ? (
+      //   <>
+      //   <li className={activeClassnames(colorId)}
+      //   onClick={typeSelection === "Free" ? handleDeleteClick : onClickFn}
+      //   >
+      //   {text !== undefined ? text : ``}
+      //     <div className={styles.hover_buttons}>
+      //       <button
+      //         className={styles.styled_button}
+      //         type="button"
+      //         data-modal="freeze"
+      //         // isFreeze={freeze}
+      //         onClick={typeSelection === "Free" ? handleDeleteClick : handleFreezeClick}
+      //       >
+      //         freeze
+      //       </button>
+      //     </div>
+      //     {freeze ? <div className={styles.asterix}><Snowflake /></div> : null}
+      //   </li>
+      // </>
+      // ) :
+       (
         <li onClick={typeSelection == "Free" ? handleDeleteClick : onClickFn} className={activeClassnames(colorId)}>
           {text !== undefined ? text : ``}
         </li>

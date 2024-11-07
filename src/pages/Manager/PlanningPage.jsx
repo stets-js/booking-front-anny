@@ -121,6 +121,26 @@ const PlanningPage = () => {
           })
           .catch((err) => dispatch(setManagerError(err.message)))
           .finally(() => dispatch(setManagerLoading(false)));
+      case "Working second":
+        dispatch(setManagerLoading(true));
+        return updateSlot(
+          managerId,
+          weekId,
+          dayIndex,
+          table[dayIndex][hourIndex].time,
+          2
+        )
+          .then(() => {
+            dispatch(
+              changeStatusSlot({
+                dayIndex,
+                hourIndex,
+                colorId: 2,
+              })
+            );
+          })
+          .catch((err) => dispatch(setManagerError(err.message)))
+          .finally(() => dispatch(setManagerLoading(false)));
       case "Free":
         dispatch(setManagerLoading(true));
         getSlotInfo(

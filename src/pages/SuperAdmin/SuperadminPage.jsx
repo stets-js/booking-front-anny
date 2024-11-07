@@ -11,7 +11,7 @@ const SuperAdministrator = () => {
       <Header
         endpoints={[
           { text: "Users", path: path.users },
-          // { text: "Current Meetings", path: path.currentManagers },
+          {text:"Current Meetings", path: path.currentManagersTable},
           { text: "History", path: path.history },
           { text: "Team calendar", path: path.teamCalendar },
         ]}

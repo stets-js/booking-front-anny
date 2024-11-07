@@ -64,7 +64,7 @@ function CurrentMeetingsPageList() {
     );
     const filteredManagers = selectedTeam === "All"
     ? resManagers
-    : resManagers.filter((item) => item.team === parseInt(selectedTeam, 10));
+    : resManagers.filter((item) => item.team === selectedTeam);
     setDate(`${day}.${month}.${year}`);
     const resWeekId = await getWeekId2(day, month, year).then((res) => res);
     setCurrentTableData(filteredManagers);
@@ -77,8 +77,7 @@ function CurrentMeetingsPageList() {
       <Header
         endpoints={[
           { text: "List View", path: path.currentManagersList },
-          { text: "Table View", path: path.currentManagersTable },
-          { text: "Managers analytics", path: path.managersAnalytics },
+          { text: "Table View", path: path.currentManagersTable }
         ]}
       />
       <div style={isThatPhone.isPhone ? dividerStylesAdpt : dividerStyles}>
@@ -91,8 +90,8 @@ function CurrentMeetingsPageList() {
         sortTextFunc={setcurrentSortStatus}
         sortMan={"Selected"}
         sortMangFunc={setcurrentSelectedSortStatus}
-        sortStars={"Stars"}
-        sortStarsFunc={setCurrentSelectedStars}
+        // sortStars={"Stars"}
+        // sortStarsFunc={setCurrentSelectedStars}
       />
       {isRenderTableAvailable ? (
         <>
@@ -105,15 +104,11 @@ function CurrentMeetingsPageList() {
                     }}
                   >
                     <option value="All">All</option>
-                    <option value="1">Team 1</option>
-                    <option value="2">Team 2</option>
-                    <option value="3">Team 3</option>
-                    <option value="4">Team 4</option>
-                    <option value="5">Team 5</option>
-                    <option value="6">Team 6</option>
-                    <option value="7">Team 7</option>
-                    <option value="8">CB MIC</option>
-                    <option value="9">Without sale</option>
+                    <option value="Chat">Chat</option>
+                    <option value="OM">OM</option>
+                    <option value="Drop">Drop</option>
+                    <option value="Deptor">Deptor</option>
+                    <option value="Awake">Awake</option>
                   </select>
                   
           <MeetingsTable

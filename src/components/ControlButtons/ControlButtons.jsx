@@ -27,14 +27,14 @@ const ControlButtons = () => {
           onChangeType={onCheckedButton}
           title="Working time"
         />
-        {/* <RadioButton
+        <RadioButton
           buttonType={buttonType}
           style={styles.controlButton}
           styleActive={styles.controlButtonOrangeFocus}
           styleColor={styles.controlButtonOrange}
           onChangeType={onCheckedButton}
-          title="Working time"
-        /> */}
+          title="Working second"
+        />
         <RadioButton
           buttonType={buttonType}
           style={styles.controlButton}
