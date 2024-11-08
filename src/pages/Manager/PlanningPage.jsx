@@ -80,7 +80,7 @@ const PlanningPage = () => {
   const getTemplate = () => {
     table.map((day, dayIndex) =>
       day.map((item, hourIndex) => {
-        return item.color === 1 || item.color === 2
+        return item.color === 1 || item.color === 2 || item.color === 3 || item.color === 4 || item.color === 8
           ? updateSlot(
               managerId,
               weekId,
@@ -101,7 +101,7 @@ const PlanningPage = () => {
 
   const onClickSlot = (dayIndex, hourIndex) => {
     switch (typeSelection) {
-      case "Working time":
+      case "Chat":
         dispatch(setManagerLoading(true));
         return updateSlot(
           managerId,
@@ -121,7 +121,7 @@ const PlanningPage = () => {
           })
           .catch((err) => dispatch(setManagerError(err.message)))
           .finally(() => dispatch(setManagerLoading(false)));
-      case "Working second":
+      case "OM":
         dispatch(setManagerLoading(true));
         return updateSlot(
           managerId,
@@ -141,6 +141,66 @@ const PlanningPage = () => {
           })
           .catch((err) => dispatch(setManagerError(err.message)))
           .finally(() => dispatch(setManagerLoading(false)));
+      case "Drop":
+        dispatch(setManagerLoading(true));
+        return updateSlot(
+          managerId,
+          weekId,
+          dayIndex,
+          table[dayIndex][hourIndex].time,
+          3
+        )
+          .then(() => {
+            dispatch(
+              changeStatusSlot({
+                dayIndex,
+                hourIndex,
+                colorId: 3,
+              })
+            );
+          })
+          .catch((err) => dispatch(setManagerError(err.message)))
+          .finally(() => dispatch(setManagerLoading(false)));
+      case "Deptor":
+        dispatch(setManagerLoading(true));
+        return updateSlot(
+          managerId,
+          weekId,
+          dayIndex,
+          table[dayIndex][hourIndex].time,
+          4
+        )
+          .then(() => {
+            dispatch(
+              changeStatusSlot({
+                dayIndex,
+                hourIndex,
+                colorId: 4,
+              })
+            );
+          })
+          .catch((err) => dispatch(setManagerError(err.message)))
+          .finally(() => dispatch(setManagerLoading(false)));
+      case "Awake":
+        dispatch(setManagerLoading(true));
+        return updateSlot(
+          managerId,
+          weekId,
+          dayIndex,
+          table[dayIndex][hourIndex].time,
+          8
+        )
+          .then(() => {
+            dispatch(
+              changeStatusSlot({
+                dayIndex,
+                hourIndex,
+                colorId: 8,
+              })
+            );
+          })
+          .catch((err) => dispatch(setManagerError(err.message)))
+          .finally(() => dispatch(setManagerLoading(false)));
       case "Free":
         dispatch(setManagerLoading(true));
         getSlotInfo(
@@ -150,10 +210,10 @@ const PlanningPage = () => {
           table[dayIndex][hourIndex].time
         )
           .then((slotInfo) => {
-            console.log("slotInfo", slotInfo);
-            if (slotInfo.data.status_id > 2) {
-              error("Slot is occupied");
-            } else {
+            // console.log("slotInfo", slotInfo);
+            // if (slotInfo.data.status_id > 2) {
+            //   error("Slot is occupied");
+            // } else {
               updateSlot(
                 managerId,
                 weekId,
@@ -173,7 +233,7 @@ const PlanningPage = () => {
                 .catch((err) => dispatch(setManagerError(err.message)))
                 .finally(() => dispatch(setManagerLoading(false)));
             }
-          })
+          )
           .catch((err) => dispatch(setManagerError(err.message)))
           .finally(() => dispatch(setManagerLoading(false)));
       default:

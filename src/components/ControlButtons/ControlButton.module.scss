@@ -1,7 +1,7 @@
 @import "../../styles/variables.scss";
 
 .wrapperControlButtons {
-  width: 546px;
+  width: 850px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9,6 +9,7 @@
 }
 
 .controlButton {
+  width: 100px;
   padding: 10px;
   font-size: 24px;
   transition: 200ms linear;
@@ -31,7 +32,30 @@
 .controlButtonOrange {
   background-color: $tableItem-orangeColor;
 }
+.controlButtonBLue {
+  background-color: $tableItem-blueColor;
+}
 
+.controlButtonBlueFocus {
+  background-color: $tableItem-blueColorHover;
+  border: 3px solid rgb(52, 52, 52);
+}
+.controlButtonPurple {
+  background-color: $tableItem-purpleColor;
+}
+
+.controlButtonPurpleFocus {
+  background-color: $tableItem-purpleColorHover;
+  border: 3px solid rgb(52, 52, 52);
+}
+.controlButtonRed {
+  background-color: $tableItem-redColor;
+}
+
+.controlButtonRedFocus {
+  background-color: $tableItem-redColorHover;
+  border: 3px solid rgb(52, 52, 52);
+}
 .controlButtonGreenFocus {
   background-color: $tableItem-greenHover;
   border: 3px solid rgba(78, 138, 56, 1);

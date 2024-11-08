@@ -25,7 +25,7 @@ const ControlButtons = () => {
           styleActive={styles.controlButtonGreenFocus}
           styleColor={styles.controlButtonGreen}
           onChangeType={onCheckedButton}
-          title="Working time"
+          title="Chat"
         />
         <RadioButton
           buttonType={buttonType}
@@ -33,7 +33,31 @@ const ControlButtons = () => {
           styleActive={styles.controlButtonOrangeFocus}
           styleColor={styles.controlButtonOrange}
           onChangeType={onCheckedButton}
-          title="Working second"
+          title="OM"
+        />
+        <RadioButton
+          buttonType={buttonType}
+          style={styles.controlButton}
+          styleActive={styles.controlButtonBlueFocus}
+          styleColor={styles.controlButtonBLue}
+          onChangeType={onCheckedButton}
+          title="Drop"
+        />
+        <RadioButton
+          buttonType={buttonType}
+          style={styles.controlButton}
+          styleActive={styles.controlButtonPurpleFocus}
+          styleColor={styles.controlButtonPurple}
+          onChangeType={onCheckedButton}
+          title="Deptor"
+        />
+        <RadioButton
+          buttonType={buttonType}
+          style={styles.controlButton}
+          styleActive={styles.controlButtonRedFocus}
+          styleColor={styles.controlButtonRed}
+          onChangeType={onCheckedButton}
+          title="Awake"
         />
         <RadioButton
           buttonType={buttonType}

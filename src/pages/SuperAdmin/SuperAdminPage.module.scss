@@ -94,13 +94,14 @@
 
 ///// RADIO BUTTONS//////
 .wrapperControlButtons {
-  width: 500px;
+  width: 850px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 0 auto 75px auto;
 }
 .controlButton {
+  width: 100px;
   padding: 10px;
   font-size: 24px;
   transition: 200ms linear;
@@ -134,7 +135,30 @@
   background-color: $tableItem-grayHover;
   border: 3px solid rgba(136, 136, 136, 1);
 }
+.controlButtonBLue {
+  background-color: $tableItem-blueColor;
+}
 
+.controlButtonBlueFocus {
+  background-color: $tableItem-blueColorHover;
+  border: 3px solid rgb(52, 52, 52);
+}
+.controlButtonPurple {
+  background-color: $tableItem-purpleColor;
+}
+
+.controlButtonPurpleFocus {
+  background-color: $tableItem-purpleColorHover;
+  border: 3px solid rgb(52, 52, 52);
+}
+.controlButtonRed {
+  background-color: $tableItem-redColor;
+}
+
+.controlButtonRedFocus {
+  background-color: $tableItem-redColorHover;
+  border: 3px solid rgb(52, 52, 52);
+}
 /////// MANAGERS SELECT //////
 .managers__select{
   width: 200px;

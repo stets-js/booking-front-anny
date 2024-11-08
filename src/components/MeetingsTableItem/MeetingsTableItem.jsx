@@ -238,103 +238,104 @@ const MeetingsTableItem = ({
             {text !== undefined ? text : `manager name is undefined`}
           </Link>
         </>
-      ) : colorId === 3 ? (
-        <>
-          <li
-            onClick={typeSelection === "Free" ? handleDeleteClick : onClickFn}
-            key={dayIndex}
-            className={activeClassnames(colorId)}
-          >
-            {text !== undefined ? text : ``}
-            <div className={styles.hover_buttons}>
-              <button
-                type="button"
-                className={styles.styled_button}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsOpen(!isOpen);
-                  setModal("appointment");
-                }}
-              >
-                info
-              </button>
-            </div>
-            {isFollowUp ? <div className={styles.asterix}><Star /></div> : null}
-            {isOnControl ? <div className={styles.question}><Question /></div> : null}
-          </li>
-          {modal === "appointment" && (
-            // <NewAppointment
-            //   isOpen={isOpen}
-            //   time={data}
-            //   weekId={weekId}
-            //   slotId={slotId}
-            //   dayIndex={dayIndex}
-            //   date={date}
-            //   hourIndex={hourIndex}
-            //   handleClose={() => setIsOpen(!isOpen)}
-            // />
-            <ConsultationInfo
-              isOpen={isOpen}
-              dayIndex={dayIndex}
-              hourIndex={hourIndex}
-              slotId={+slotId}
-              handleClose={() => setIsOpen(!isOpen)}
-              weekId={weekId}
-              manId={managerId}
-              handleReload={handleReload}
-              currentTable
-            />
-          )}
-        </>
-      ) : colorId === 4 ? (
-        <>
-          <li
-            onClick={typeSelection == "Free" ? handleDeleteClick : onClickFn}
-            key={dayIndex}
-            className={activeClassnames(colorId)}
-          >
-            {text !== undefined ? text : ``}
-            <div className={styles.hover_buttons}>
-              {/* <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onClickSlotButton(dayIndex, hourIndex, managerId);
-                }}
-              >
-                start
-              </button> */}
-              <button
-                type="button"
-                className={styles.styled_button}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsOpen(!isOpen);
-                  setModal("consultation");
-                }}
-              >
-                info
-              </button>
-            </div>
-            
-            {isFollowUp ? <div className={styles.asterix}><Star /></div> : null}
-            {isOnControl ? <div className={styles.question}><Question /></div> : null}
-          </li>
-          {modal === "consultation" && (
-            <ConsultationInfo
-              dayIndex={dayIndex}
-              hourIndex={hourIndex}
-              isOpen={isOpen}
-              handleClose={() => setIsOpen(!isOpen)}
-              slotId={+slotId}
-              weekId={weekId}
-              manId={managerId}
-              handleReload={handleReload}
-              currentTable
-            />
-          )}
-        </>
       ) : 
+      // colorId === 3 ? (
+      //   <>
+      //     <li
+      //       onClick={typeSelection === "Free" ? handleDeleteClick : onClickFn}
+      //       key={dayIndex}
+      //       className={activeClassnames(colorId)}
+      //     >
+      //       {text !== undefined ? text : ``}
+      //       <div className={styles.hover_buttons}>
+      //         <button
+      //           type="button"
+      //           className={styles.styled_button}
+      //           onClick={(e) => {
+      //             e.stopPropagation();
+      //             setIsOpen(!isOpen);
+      //             setModal("appointment");
+      //           }}
+      //         >
+      //           info
+      //         </button>
+      //       </div>
+      //       {isFollowUp ? <div className={styles.asterix}><Star /></div> : null}
+      //       {isOnControl ? <div className={styles.question}><Question /></div> : null}
+      //     </li>
+      //     {modal === "appointment" && (
+      //       // <NewAppointment
+      //       //   isOpen={isOpen}
+      //       //   time={data}
+      //       //   weekId={weekId}
+      //       //   slotId={slotId}
+      //       //   dayIndex={dayIndex}
+      //       //   date={date}
+      //       //   hourIndex={hourIndex}
+      //       //   handleClose={() => setIsOpen(!isOpen)}
+      //       // />
+      //       <ConsultationInfo
+      //         isOpen={isOpen}
+      //         dayIndex={dayIndex}
+      //         hourIndex={hourIndex}
+      //         slotId={+slotId}
+      //         handleClose={() => setIsOpen(!isOpen)}
+      //         weekId={weekId}
+      //         manId={managerId}
+      //         handleReload={handleReload}
+      //         currentTable
+      //       />
+      //     )}
+      //   </>
+      // ) : colorId === 4 ? (
+      //   <>
+      //     <li
+      //       onClick={typeSelection == "Free" ? handleDeleteClick : onClickFn}
+      //       key={dayIndex}
+      //       className={activeClassnames(colorId)}
+      //     >
+      //       {text !== undefined ? text : ``}
+      //       <div className={styles.hover_buttons}>
+      //         {/* <button
+      //           type="button"
+      //           onClick={(e) => {
+      //             e.stopPropagation();
+      //             onClickSlotButton(dayIndex, hourIndex, managerId);
+      //           }}
+      //         >
+      //           start
+      //         </button> */}
+      //         <button
+      //           type="button"
+      //           className={styles.styled_button}
+      //           onClick={(e) => {
+      //             e.stopPropagation();
+      //             setIsOpen(!isOpen);
+      //             setModal("consultation");
+      //           }}
+      //         >
+      //           info
+      //         </button>
+      //       </div>
+            
+      //       {isFollowUp ? <div className={styles.asterix}><Star /></div> : null}
+      //       {isOnControl ? <div className={styles.question}><Question /></div> : null}
+      //     </li>
+      //     {modal === "consultation" && (
+      //       <ConsultationInfo
+      //         dayIndex={dayIndex}
+      //         hourIndex={hourIndex}
+      //         isOpen={isOpen}
+      //         handleClose={() => setIsOpen(!isOpen)}
+      //         slotId={+slotId}
+      //         weekId={weekId}
+      //         manId={managerId}
+      //         handleReload={handleReload}
+      //         currentTable
+      //       />
+      //     )}
+      //   </>
+      // ) : 
       // colorId === 2 ? (
       //   <>
       //   <li className={activeClassnames(colorId)}

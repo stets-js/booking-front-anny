@@ -24,10 +24,44 @@ export default function Managers({ isOpenModal, isAdmin, data }) {
   const [password, setPassword] = useState("");
 
   let usersArray = [
+    
     {
-      text: "Managers",
+      text: "Chat",
       role: "Manager",
       roleId: 2,
+      team: "Chat",
+      isAdmin: false,
+      isManager: true,
+    },
+    {
+      text: "OM",
+      role: "Manager",
+      roleId: 2,
+      team: "OM",
+      isAdmin: false,
+      isManager: true,
+    },
+    {
+      text: "Drop",
+      role: "Manager",
+      roleId: 2,
+      team: "Drop",
+      isAdmin: false,
+      isManager: true,
+    },
+    {
+      text: "Deptor",
+      role: "Manager",
+      roleId: 2,
+      team: "Deptor",
+      isAdmin: false,
+      isManager: true,
+    },
+    {
+      text: "Awake",
+      role: "Manager",
+      roleId: 2,
+      team: "Awake",
       isAdmin: false,
       isManager: true,
     }
@@ -84,7 +118,7 @@ export default function Managers({ isOpenModal, isAdmin, data }) {
                 )}
                 <ul className={styles.main_wrapper}>
                   {managers.map((item) => {
-                    if (i.roleId === item.role_id || !item.role_id) {
+                    if (i.team === item.team) {
                       return (
                         <Fade
                           cascade

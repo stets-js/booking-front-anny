@@ -189,15 +189,12 @@ const getTeamsWorkWeek = (weekId, team = null, manager = null, course = null, gr
     });
 };
 
-const getTeamsWorkWeek2 = (weekId, team = null, manager = null, course = null, group = null) => {
+const getTeamsWorkWeek2 = (weekId, status_id = null) => {
   let url = `/get_week_team_calendar/${weekId}`;
 
   // Створюємо масив параметрів запиту
   const queryParams = [];
-  if (team !== null) queryParams.push(`team=${team}`);
-  if (manager !== null) queryParams.push(`manager=${manager}`);
-  if (course !== null) queryParams.push(`course=${course}`);
-  if (group !== null) queryParams.push(`group=${group}`);
+  if (status_id !== null) queryParams.push(`status_id=${status_id}`);
 
   // Додаємо параметри запиту до URL
   if (queryParams.length > 0) {

@@ -30,8 +30,8 @@ const setSavedTemplate = createAction(SAVE_TABLE);
 
 const getTeamCalendarWeek2 = createAsyncThunk(
   GET_WEEK,
-  ({ weekId, team, manager }, { rejectWithValue }) => {
-    return getTeamsWorkWeek2(weekId, team, manager)
+  ({ weekId, status_id }, { rejectWithValue }) => {
+    return getTeamsWorkWeek2(weekId, status_id)
       .then((data) => data)
       .catch((data) => {
         error(
@@ -114,7 +114,7 @@ const getManagerTable = createAsyncThunk(
         const template = JSON.parse(data.data.template);
         template.map((day, dayIndex) =>
           day.map((item, hourIndex) => {
-            return item.color === 1 || item.color === 2
+            return item.color === 1 || item.color === 2 || item.color === 3 || item.color === 4 || item.color === 8
               ? updateSlot(
                   managerId,
                   weekId,
